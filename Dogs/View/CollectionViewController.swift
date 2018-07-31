@@ -30,7 +30,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         viewModel = CollectionViewModel(dataSouce: dataSource)
         
         // Load data
-        viewModel.sampleImagesFill()
+//        viewModel.sampleImagesFill()
+        viewModel.fetchImagesOf(breed: "hound") { (error) in
+            if let error = error {
+                print(error.description())
+            }
+        }
     }
 
 }

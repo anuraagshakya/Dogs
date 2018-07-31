@@ -9,7 +9,5 @@
 import Foundation
 
 struct DogImage {
-    var breed   : String
-    var subBreed: String
-    var imageUrl: String
+    var urlString: String
 }

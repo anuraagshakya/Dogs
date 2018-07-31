@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Foundation
 
 class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
-    var data = [UIImage]() {
+    var data = [DogImage]() {
         didSet {
             onDataUpdated()
         }
@@ -23,7 +24,7 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        cell.imageView.image = data[indexPath.row]
+        cell.urlString = data[indexPath.row].urlString
         return cell
     }
     
