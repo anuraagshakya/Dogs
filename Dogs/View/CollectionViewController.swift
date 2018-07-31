@@ -28,6 +28,8 @@ class CollectionViewController: UICollectionViewController {
         
         // Setup view model
         viewModel = CollectionViewModel(dataSouce: dataSource)
+        
+        // Load data
         viewModel.sampleImagesFill()
     }
     
