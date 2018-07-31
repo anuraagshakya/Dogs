@@ -12,6 +12,8 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    var task: URLSessionTask?
+    
     var urlString: String! {
         didSet {
             self.imageView.image = nil
@@ -27,7 +29,8 @@ class CollectionViewCell: UICollectionViewCell {
         guard let url = URL(string: urlString) else {
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        task?.cancel()
+        task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if error != nil {
                 print(error!)
@@ -38,7 +41,7 @@ class CollectionViewCell: UICollectionViewCell {
                 self.imageView.image = UIImage(data: data!)
             }
         }
-        task.resume()
+        task!.resume()
     }
     
 }

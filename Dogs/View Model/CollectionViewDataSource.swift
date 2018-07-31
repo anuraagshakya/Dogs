@@ -31,8 +31,8 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if (kind == UICollectionElementKindSectionHeader) {
-            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchViewHeader", for: indexPath)
-            
+            let headerView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchViewHeader", for: indexPath) as! SearchCollectionReusableView
+                        
             return headerView
         }
         

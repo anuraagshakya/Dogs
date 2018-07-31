@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CollectionViewController: UICollectionViewController {
     let dataSource = CollectionViewDataSource()
     var viewModel: CollectionViewModel!
 
@@ -28,15 +28,18 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         
         // Setup view model
         viewModel = CollectionViewModel(dataSouce: dataSource)
-        
-        // Load data
-//        viewModel.sampleImagesFill()
-        viewModel.fetchImagesOf(breed: "hound") { (error) in
+    }
+
+}
+
+extension CollectionViewController: SearchActionDelegate {
+    func searchBarDidRequestSearchFor(string: String) {
+        viewModel.fetchImagesOf(breed: string.lowercased()) {
+            (error) in
             if let error = error {
                 print(error.description())
             }
         }
     }
-
 }
 
