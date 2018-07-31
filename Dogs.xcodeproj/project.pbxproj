@@ -13,6 +13,7 @@
 		CE194F582110675E005ED8FF /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F572110675E005ED8FF /* CollectionViewModel.swift */; };
 		CE194F5E211075D0005ED8FF /* DoctorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F5B211075D0005ED8FF /* DoctorAPI.swift */; };
 		CE194F5F211075D0005ED8FF /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F5C211075D0005ED8FF /* RequestFactory.swift */; };
+		CE194F612110768D005ED8FF /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F602110768C005ED8FF /* ErrorResult.swift */; };
 		CEC4A41521104E4100A8E039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A41421104E4100A8E039 /* AppDelegate.swift */; };
 		CEC4A41721104E4100A8E039 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A41621104E4100A8E039 /* CollectionViewController.swift */; };
 		CEC4A41A21104E4100A8E039 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A41821104E4100A8E039 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		CE194F572110675E005ED8FF /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		CE194F5B211075D0005ED8FF /* DoctorAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAPI.swift; sourceTree = "<group>"; };
 		CE194F5C211075D0005ED8FF /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		CE194F602110768C005ED8FF /* ErrorResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResult.swift; sourceTree = "<group>"; };
 		CEC4A41121104E4100A8E039 /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4A41421104E4100A8E039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC4A41621104E4100A8E039 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				CE194F5B211075D0005ED8FF /* DoctorAPI.swift */,
 				CE194F5C211075D0005ED8FF /* RequestFactory.swift */,
+				CE194F602110768C005ED8FF /* ErrorResult.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE194F5421105FCE005ED8FF /* CollectionViewDataSource.swift in Sources */,
+				CE194F612110768D005ED8FF /* ErrorResult.swift in Sources */,
 				CEC4A41721104E4100A8E039 /* CollectionViewController.swift in Sources */,
 				CE194F582110675E005ED8FF /* CollectionViewModel.swift in Sources */,
 				CE194F5621106509005ED8FF /* CollectionViewCell.swift in Sources */,
