@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController {
+class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let dataSource = CollectionViewDataSource()
     var viewModel: CollectionViewModel!
 
@@ -31,18 +31,6 @@ class CollectionViewController: UICollectionViewController {
         
         // Load data
         viewModel.sampleImagesFill()
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        if (kind == UICollectionElementKindSectionHeader) {
-            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchViewHeader", for: indexPath)
-            
-            return headerView
-        }
-        
-        return UICollectionReusableView()
-        
     }
 
 }

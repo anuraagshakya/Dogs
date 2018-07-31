@@ -27,4 +27,14 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if (kind == UICollectionElementKindSectionHeader) {
+            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchViewHeader", for: indexPath)
+            
+            return headerView
+        }
+        
+        return UICollectionReusableView()
+    }
 }
