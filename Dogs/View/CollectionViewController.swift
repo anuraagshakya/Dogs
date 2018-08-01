@@ -40,7 +40,7 @@ class CollectionViewController: UICollectionViewController {
 
 extension CollectionViewController: SearchActionDelegate {
     func searchBarDidRequestSearchFor(string: String) {
-        viewModel.fetchImagesOf(breed: string.lowercased()) { [unowned self] (error) in
+        viewModel.fetchImagesOf(breed: string) { [unowned self] (error) in
             if let error = error {
                 self.displayError(error)
             }

@@ -14,6 +14,7 @@
 		CE194F5F211075D0005ED8FF /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F5C211075D0005ED8FF /* RequestFactory.swift */; };
 		CE194F612110768D005ED8FF /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F602110768C005ED8FF /* ErrorResult.swift */; };
 		CE194F652110A373005ED8FF /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F642110A373005ED8FF /* SearchBar.swift */; };
+		CE867B242111FB3A00B99593 /* breeds.json in Resources */ = {isa = PBXBuildFile; fileRef = CE867B232111FB3A00B99593 /* breeds.json */; };
 		CEC4A41521104E4100A8E039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A41421104E4100A8E039 /* AppDelegate.swift */; };
 		CEC4A41721104E4100A8E039 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A41621104E4100A8E039 /* CollectionViewController.swift */; };
 		CEC4A41A21104E4100A8E039 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A41821104E4100A8E039 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		CE194F5C211075D0005ED8FF /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		CE194F602110768C005ED8FF /* ErrorResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResult.swift; sourceTree = "<group>"; };
 		CE194F642110A373005ED8FF /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		CE867B232111FB3A00B99593 /* breeds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breeds.json; sourceTree = "<group>"; };
 		CEC4A41121104E4100A8E039 /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4A41421104E4100A8E039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC4A41621104E4100A8E039 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				CE194F4E21105C8D005ED8FF /* View */,
 				CE194F5221105F91005ED8FF /* View Model */,
 				CEC4A41421104E4100A8E039 /* AppDelegate.swift */,
+				CE867B232111FB3A00B99593 /* breeds.json */,
 				CEC4A41821104E4100A8E039 /* Main.storyboard */,
 				CEC4A41B21104E4400A8E039 /* Assets.xcassets */,
 				CEC4A41D21104E4400A8E039 /* LaunchScreen.storyboard */,
@@ -204,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE867B242111FB3A00B99593 /* breeds.json in Resources */,
 				CEC4A41F21104E4400A8E039 /* LaunchScreen.storyboard in Resources */,
 				CEC4A41C21104E4400A8E039 /* Assets.xcassets in Resources */,
 				CEC4A41A21104E4100A8E039 /* Main.storyboard in Resources */,

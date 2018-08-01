@@ -24,6 +24,8 @@ class SearchBar: UISearchBar {
 
 extension SearchBar: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchText = searchBar.text ?? ""
+        searchActionDelegate?.searchBarDidRequestSearchFor(string: searchText)
         searchBar.resignFirstResponder()
     }
     
@@ -32,8 +34,6 @@ extension SearchBar: UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        let searchText = searchBar.text ?? ""
-        searchActionDelegate?.searchBarDidRequestSearchFor(string: searchText)
         searchBar.showsCancelButton = false
     }
     

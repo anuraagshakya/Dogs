@@ -11,9 +11,11 @@ import SwiftyJSON
 
 class CollectionViewModel {
     var dataSource: CollectionViewDataSource
+    var dogBreeds = [String:[String]]()
     
     init(dataSouce: CollectionViewDataSource) {
         self.dataSource = dataSouce
+        self.readBreedsFromFile()
     }
     
     // MARK: Endpoint constants
@@ -22,7 +24,13 @@ class CollectionViewModel {
     
     // MARK: API methods
     func fetchImagesOf(breed: String, onFailure: @escaping (ErrorResult?) -> () = {_ in }) {
-        let trailString = "/\(breed)/images"
+        // Check if user requested search is for a valid dog breed
+        guard dogBreeds[breed.lowercased()] != nil else {
+            onFailure(ErrorResult.other(string: "\"\(breed)\" is not a valid dog breed"))
+            return
+        }
+        
+        let trailString = "/\(breed.lowercased())/images"
         guard let endpointUrl = URL(string: endpoint + trailString) else {
             onFailure(ErrorResult.network(string: "Invalid endpoint URL"))
             return
@@ -58,6 +66,27 @@ class CollectionViewModel {
         task.resume()
     }
     
+    // MARK: Helper functions
+    
+    private func readBreedsFromFile() {
+        guard let breedFilePath = Bundle.main.path(forResource: "breeds", ofType: "json") else {
+            fatalError("Could not find file containing list of breeds")
+        }
+        
+        guard let data = try? String(contentsOfFile: breedFilePath) else {
+            fatalError("Could not read file containing list of breeds")
+        }
+        
+        let jsonData = JSON(parseJSON: data)
+        for dataPoint in jsonData["message"].dictionaryValue {
+            var stringArray = [String]()
+            for value in dataPoint.value.arrayValue {
+                stringArray.append(value.stringValue)
+            }
+            dogBreeds[dataPoint.key] = stringArray
+        }
+    }
+    
     private func parseJSON(json: JSON) {
         var data = [DogImage]()
         for dataPoint in json["message"].arrayValue {
@@ -67,10 +96,5 @@ class CollectionViewModel {
         }
         dataSource.data = data
     }
-    
-//    func sampleImagesFill() {
-//        for i in 0...9 {
-//            dataSource.data.append(UIImage(named: String(i))!)
-//        }
-//    }
+
 }
