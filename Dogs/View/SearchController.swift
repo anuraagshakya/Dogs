@@ -12,21 +12,30 @@ import UIKit
     func searchBarDidRequestSearchFor(string: String)
 }
 
-class SearchBar: UISearchBar {
-    @IBOutlet var searchActionDelegate: SearchActionDelegate?
+class SearchController: UISearchController {
+    var searchActionDelegate: SearchActionDelegate?
+    
+    override init(searchResultsController: UIViewController?) {
+        super.init(searchResultsController: searchResultsController)
+        
+        self.searchBar.delegate = self
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
-        self.delegate = self
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 }
 
-extension SearchBar: UISearchBarDelegate {
+extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchText = searchBar.text ?? ""
-        searchActionDelegate?.searchBarDidRequestSearchFor(string: searchText)
-        searchBar.resignFirstResponder()
+        self.dismiss(animated: true) { [unowned self] in
+            self.searchActionDelegate?.searchBarDidRequestSearchFor(string: searchText)
+        }
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

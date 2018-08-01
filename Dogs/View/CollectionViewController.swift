@@ -11,12 +11,18 @@ import UIKit
 class CollectionViewController: UICollectionViewController {
     let dataSource = CollectionViewDataSource()
     var viewModel: CollectionViewModel!
+    var searchController: SearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set navigation item title
         navigationItem.title = "Dogs"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        searchController = SearchController(searchResultsController: nil)
+        searchController.searchActionDelegate = self
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         // Setup datasource
         collectionView?.dataSource = dataSource
