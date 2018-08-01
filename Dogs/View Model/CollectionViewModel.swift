@@ -18,7 +18,7 @@ class CollectionViewModel {
     
     // MARK: Endpoint constants
     
-    let endpoint          = "https://dog.ceo/api/breed"
+    let endpoint = "https://dog.ceo/api/breed"
     
     // MARK: API methods
     func fetchImagesOf(breed: String, onFailure: @escaping (ErrorResult?) -> () = {_ in }) {

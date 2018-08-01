@@ -29,15 +29,20 @@ class CollectionViewController: UICollectionViewController {
         // Setup view model
         viewModel = CollectionViewModel(dataSouce: dataSource)
     }
-
+    
+    func displayError(_ error: ErrorResult) {
+        let ac = UIAlertController(title: "An Error Occurred", message: error.description(), preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(ac, animated: true)
+    }
+    
 }
 
 extension CollectionViewController: SearchActionDelegate {
     func searchBarDidRequestSearchFor(string: String) {
-        viewModel.fetchImagesOf(breed: string.lowercased()) {
-            (error) in
+        viewModel.fetchImagesOf(breed: string.lowercased()) { [unowned self] (error) in
             if let error = error {
-                print(error.description())
+                self.displayError(error)
             }
         }
     }
