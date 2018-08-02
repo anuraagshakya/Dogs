@@ -17,6 +17,7 @@
 		CE867B2821121E9400B99593 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE867B2721121E9400B99593 /* SearchController.swift */; };
 		CE867B2C211242C400B99593 /* AutocompleteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE867B2B211242C400B99593 /* AutocompleteTableViewController.swift */; };
 		CEBB72EF2112F73100C09C12 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB72EE2112F73100C09C12 /* Extensions.swift */; };
+		CEBB72F12113275900C09C12 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CEBB72F02113275900C09C12 /* README.md */; };
 		CEC4A41521104E4100A8E039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A41421104E4100A8E039 /* AppDelegate.swift */; };
 		CEC4A41721104E4100A8E039 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A41621104E4100A8E039 /* CollectionViewController.swift */; };
 		CEC4A41A21104E4100A8E039 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A41821104E4100A8E039 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		CE867B2721121E9400B99593 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		CE867B2B211242C400B99593 /* AutocompleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteTableViewController.swift; sourceTree = "<group>"; };
 		CEBB72EE2112F73100C09C12 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CEBB72F02113275900C09C12 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		CEC4A41121104E4100A8E039 /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4A41421104E4100A8E039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC4A41621104E4100A8E039 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				CEC4A41B21104E4400A8E039 /* Assets.xcassets */,
 				CEC4A41D21104E4400A8E039 /* LaunchScreen.storyboard */,
 				CEC4A42021104E4400A8E039 /* Info.plist */,
+				CEBB72F02113275900C09C12 /* README.md */,
 			);
 			path = Dogs;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				CE867B242111FB3A00B99593 /* breeds.json in Resources */,
 				CEC4A41F21104E4400A8E039 /* LaunchScreen.storyboard in Resources */,
+				CEBB72F12113275900C09C12 /* README.md in Resources */,
 				CEC4A41C21104E4400A8E039 /* Assets.xcassets in Resources */,
 				CEC4A41A21104E4100A8E039 /* Main.storyboard in Resources */,
 			);

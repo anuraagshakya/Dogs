@@ -78,6 +78,9 @@ extension SearchController: UISearchBarDelegate {
         //  API call.
         var searchText = searchBar.text ?? ""
         if !autocompleteView.dogsBreedList.contains(searchText) {
+            guard !autocompleteView.filteredBreedList.isEmpty else {
+                return
+            }
             searchText = autocompleteView.filteredBreedList[0]
         }
         
