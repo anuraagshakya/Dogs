@@ -12,14 +12,16 @@
 		CE194F582110675E005ED8FF /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F572110675E005ED8FF /* CollectionViewModel.swift */; };
 		CE194F5F211075D0005ED8FF /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F5C211075D0005ED8FF /* RequestFactory.swift */; };
 		CE194F612110768D005ED8FF /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F602110768C005ED8FF /* ErrorResult.swift */; };
+		CE857D132112D2D500400EE1 /* DogSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE857D122112D2D500400EE1 /* DogSearchResult.swift */; };
 		CE867B242111FB3A00B99593 /* breeds.json in Resources */ = {isa = PBXBuildFile; fileRef = CE867B232111FB3A00B99593 /* breeds.json */; };
 		CE867B2821121E9400B99593 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE867B2721121E9400B99593 /* SearchController.swift */; };
+		CE867B2C211242C400B99593 /* AutocompleteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE867B2B211242C400B99593 /* AutocompleteTableViewController.swift */; };
+		CEBB72EF2112F73100C09C12 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB72EE2112F73100C09C12 /* Extensions.swift */; };
 		CEC4A41521104E4100A8E039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A41421104E4100A8E039 /* AppDelegate.swift */; };
 		CEC4A41721104E4100A8E039 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A41621104E4100A8E039 /* CollectionViewController.swift */; };
 		CEC4A41A21104E4100A8E039 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A41821104E4100A8E039 /* Main.storyboard */; };
 		CEC4A41C21104E4400A8E039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A41B21104E4400A8E039 /* Assets.xcassets */; };
 		CEC4A41F21104E4400A8E039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A41D21104E4400A8E039 /* LaunchScreen.storyboard */; };
-		CEC4A4282110538500A8E039 /* DogImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A4272110538500A8E039 /* DogImage.swift */; };
 		D75CC3AA02E4F01FD6E352C4 /* Pods_Dogs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD540CBEE4698632811294C3 /* Pods_Dogs.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +34,11 @@
 		CE194F572110675E005ED8FF /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		CE194F5C211075D0005ED8FF /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		CE194F602110768C005ED8FF /* ErrorResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResult.swift; sourceTree = "<group>"; };
+		CE857D122112D2D500400EE1 /* DogSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSearchResult.swift; sourceTree = "<group>"; };
 		CE867B232111FB3A00B99593 /* breeds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breeds.json; sourceTree = "<group>"; };
 		CE867B2721121E9400B99593 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		CE867B2B211242C400B99593 /* AutocompleteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteTableViewController.swift; sourceTree = "<group>"; };
+		CEBB72EE2112F73100C09C12 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEC4A41121104E4100A8E039 /* Dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4A41421104E4100A8E039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC4A41621104E4100A8E039 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -41,7 +46,6 @@
 		CEC4A41B21104E4400A8E039 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEC4A41E21104E4400A8E039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEC4A42021104E4400A8E039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEC4A4272110538500A8E039 /* DogImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 				CEC4A41621104E4100A8E039 /* CollectionViewController.swift */,
 				CE867B2721121E9400B99593 /* SearchController.swift */,
 				CE194F5521106509005ED8FF /* CollectionViewCell.swift */,
+				CE867B2B211242C400B99593 /* AutocompleteTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -86,8 +91,8 @@
 		CE194F5221105F91005ED8FF /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE194F5321105FCE005ED8FF /* CollectionViewDataSource.swift */,
 				CE194F572110675E005ED8FF /* CollectionViewModel.swift */,
+				CE194F5321105FCE005ED8FF /* CollectionViewDataSource.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -99,6 +104,14 @@
 				CE194F602110768C005ED8FF /* ErrorResult.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		CEBB72ED2112F71D00C09C12 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB72EE2112F73100C09C12 /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		CEC4A40821104E4100A8E039 = {
@@ -126,6 +139,7 @@
 				CEC4A4262110537800A8E039 /* Model */,
 				CE194F4E21105C8D005ED8FF /* View */,
 				CE194F5221105F91005ED8FF /* View Model */,
+				CEBB72ED2112F71D00C09C12 /* Helpers */,
 				CEC4A41421104E4100A8E039 /* AppDelegate.swift */,
 				CE867B232111FB3A00B99593 /* breeds.json */,
 				CEC4A41821104E4100A8E039 /* Main.storyboard */,
@@ -139,7 +153,7 @@
 		CEC4A4262110537800A8E039 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEC4A4272110538500A8E039 /* DogImage.swift */,
+				CE857D122112D2D500400EE1 /* DogSearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,8 +278,10 @@
 				CE194F582110675E005ED8FF /* CollectionViewModel.swift in Sources */,
 				CE194F5621106509005ED8FF /* CollectionViewCell.swift in Sources */,
 				CE194F5F211075D0005ED8FF /* RequestFactory.swift in Sources */,
-				CEC4A4282110538500A8E039 /* DogImage.swift in Sources */,
 				CEC4A41521104E4100A8E039 /* AppDelegate.swift in Sources */,
+				CE867B2C211242C400B99593 /* AutocompleteTableViewController.swift in Sources */,
+				CEBB72EF2112F73100C09C12 /* Extensions.swift in Sources */,
+				CE857D132112D2D500400EE1 /* DogSearchResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

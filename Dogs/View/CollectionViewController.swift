@@ -12,6 +12,7 @@ class CollectionViewController: UICollectionViewController {
     let dataSource = CollectionViewDataSource()
     var viewModel: CollectionViewModel!
     var searchController: SearchController!
+    var autocompleteView: AutocompleteTableViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +20,14 @@ class CollectionViewController: UICollectionViewController {
         // Set navigation item title
         navigationItem.title = "Dogs"
         navigationController?.navigationBar.prefersLargeTitles = true
-        searchController = SearchController(searchResultsController: nil)
+        
+        // Setup search controller
+        autocompleteView = AutocompleteTableViewController(style: .plain)
+        
+        searchController = SearchController(searchResultsController: autocompleteView)
         searchController.searchActionDelegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
@@ -33,10 +40,10 @@ class CollectionViewController: UICollectionViewController {
         }
         
         // Setup view model
-        viewModel = CollectionViewModel(dataSouce: dataSource)
+        viewModel = CollectionViewModel()
     }
     
-    func displayError(_ error: ErrorResult) {
+    private func displayError(_ error: ErrorResult) {
         let ac = UIAlertController(title: "An Error Occurred", message: error.description(), preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .cancel))
         present(ac, animated: true)
@@ -46,10 +53,24 @@ class CollectionViewController: UICollectionViewController {
 
 extension CollectionViewController: SearchActionDelegate {
     func searchBarDidRequestSearchFor(string: String) {
-        viewModel.fetchImagesOf(breed: string) { [unowned self] (error) in
-            if let error = error {
-                self.displayError(error)
+        let searchParts = string.split(separator: "-")
+        var breed: String
+        var subBreed: String?
+        breed = String(searchParts[0]).trimmingCharacters(in: .whitespacesAndNewlines)
+        if searchParts.count == 2 {
+            subBreed = String(searchParts[1]).trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        viewModel.fetchImagesOf(breed: breed, subBreed: subBreed) { [unowned self] (results, error) in
+            guard error == nil else {
+                self.displayError(error!)
+                return
             }
+            
+            guard let results = results else {
+                return
+            }
+            
+            self.dataSource.data = results.images
         }
     }
 }

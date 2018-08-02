@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
-    var data = [DogImage]() {
+    var data = [String]() {
         didSet {
             onDataUpdated()
         }
@@ -24,18 +24,8 @@ class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        cell.urlString = data[indexPath.row].urlString
+        cell.urlString = data[indexPath.row]
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        if (kind == UICollectionElementKindSectionHeader) {
-            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchViewHeader", for: indexPath)
-                        
-            return headerView
-        }
-        
-        return UICollectionReusableView()
-    }
 }
