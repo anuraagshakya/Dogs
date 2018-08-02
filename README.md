@@ -6,7 +6,7 @@ This App displays images of Dogs based on their breed. The user can search for a
 
 - Xcode: 9.4.1
 - iOS Target: 11.4
-- Language: Swift 4.1
+- Language: Swift 4.1.2
 - Cocoapods: 1.5.3
 
 ## Installation Instructions
@@ -28,8 +28,7 @@ The app assumes that the list of dog breeds will not change and therefore has pr
 
 ## Technical choices
 
- - The app tries to follow typical MVVM pattern. I preferred to go with MVVM to show that i am interested in new trends of programming, and i am always trying to learn new things. 
- - Although, one of the nice to haves was to limit 3rd party dependencies, I have used 'SwiftyJSON' to parse JSON files as doing so manually would me writing a lot of boiler plate code.
+ The app tries to follow typical MVVM pattern. I preferred to go with MVVM to show that i am interested in new trends of programming, and i am always trying to learn new things. 
  
  ### Notable features
   - Preloaded list of breeds that are displayed when the user taps the search bar. Typing in the search bar filters the list. I decided to do this because a typical user, like myself, may not know what breeds to search for. Moreover, it also avoids making API calls on invalid endpoints.
@@ -40,3 +39,10 @@ The app assumes that the list of dog breeds will not change and therefore has pr
 - A detailed view for viewing images in full screen when tapped
 - Dynamic cell sizes so that app looks more or less similar on all devices
 - Read the list of dogs from the API
+- Add 'Nice to haves'
+
+### Nice to have
+ - Although, one of the nice to haves was to limit 3rd party dependencies, I have used 'SwiftyJSON' to parse JSON files as doing so manually would me writing a lot of boiler plate code. ✅
+ - iPhone X support ✅
+ - Accessibility support 
+ - 
