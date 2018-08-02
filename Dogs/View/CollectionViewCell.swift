@@ -15,18 +15,20 @@ class CollectionViewCell: UICollectionViewCell {
     // Variable to store URLSessionTask we use to fetch the cell's image.
     var task: URLSessionTask?
     
-    // urlString parameter that holds the image URL and calls the
-    //  fetchImageFromUrl method when set.
+    // urlString parameter that holds the image URL. When set, it checks the
+    //  imageCache and if image has already be loaded and set it from the cache.
+    //  Else, it will load it from URL.
     var urlString: String! {
         didSet {
             self.imageView.image = nil
+            if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
+                self.imageView.image = imageFromCache
+                return
+            }
             fetchImageFromUrl(self.urlString)
         }
     }
-    
-    // TODO: Create an image cache of downloaded images to minimize network
-    //  operation.
-    
+
     private func fetchImageFromUrl(_ urlString: String) {
         guard let url = URL(string: urlString) else {
             print("Invalid image URL \(urlString)")
@@ -48,9 +50,12 @@ class CollectionViewCell: UICollectionViewCell {
                 return
             }
             
-            // Set the cells image to what we get from url on main queue
+            // Save image to cache and set the cell's image to what we get from
+            //  url on main queue
             DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: data)
+                let imageToCache = UIImage(data: data)
+                imageCache.setObject(imageToCache!, forKey: urlString as NSString)
+                self.imageView.image = imageToCache
             }
         }
         task!.resume()

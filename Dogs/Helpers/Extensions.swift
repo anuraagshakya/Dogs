@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     func capitalizingFirstLetter() -> String {
@@ -17,3 +18,5 @@ extension String {
         self = self.capitalizingFirstLetter()
     }
 }
+
+var imageCache = NSCache<NSString, UIImage>()
