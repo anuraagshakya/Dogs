@@ -33,6 +33,7 @@ The app assumes that the list of dog breeds will not change and therefore has pr
  ### Notable features
   - Preloaded list of breeds that are displayed when the user taps the search bar. Typing in the search bar filters the list. I decided to do this because a typical user, like myself, may not know what breeds to search for. Moreover, it also avoids making API calls on invalid endpoints.
   - Extending on the previous point, a free text search cannot be done. Whenever a user asks to search for a string (without tapping one of the recommended completions), the first result of the filtered results is searched for instead. If there are no filtered results, then no search is done.
+  - Images are dynamically loaded and cached
 
 ## What to add
 
@@ -44,5 +45,4 @@ The app assumes that the list of dog breeds will not change and therefore has pr
 ### Nice to have
  - Although, one of the nice to haves was to limit 3rd party dependencies, I have used 'SwiftyJSON' to parse JSON files as doing so manually would me writing a lot of boiler plate code. ✅
  - iPhone X support ✅
- - Accessibility support 
- - 
+ - Accessibility support
