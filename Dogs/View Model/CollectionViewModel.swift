@@ -16,8 +16,10 @@ class CollectionViewModel {
     
     // MARK: API methods
     func fetchImagesOf(breed: String, subBreed: String?, completion: @escaping (DogSearchResult?, ErrorResult?) -> () = { _, _  in }) {
+        
+        // Append breed and sub-breed to API endpoint
         var trailString: String
-        if let subBreed = subBreed, subBreed != "All" {
+        if let subBreed = subBreed {
             trailString = "/\(breed.lowercased())/\(subBreed.lowercased())/images"
         } else {
             trailString = "/\(breed.lowercased())/images"
@@ -27,8 +29,9 @@ class CollectionViewModel {
             completion(nil, err)
             return
         }
-        var request = RequestFactory.request(method: .GET, url: endpointUrl)
         
+        // Prepare URLRequest
+        var request = RequestFactory.request(method: .GET, url: endpointUrl)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in

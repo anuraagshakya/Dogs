@@ -9,6 +9,12 @@
 import UIKit
 
 class CollectionViewController: UICollectionViewController {
+    
+    // dataSource: The data source this collection view
+    // viewModel: The view model which handles app data
+    // searchController: UISearchController subclass that is embedded into the
+    //  navigation bar
+    // autocompleteView: UITableView subclass to show search recommendations
     let dataSource = CollectionViewDataSource()
     var viewModel: CollectionViewModel!
     var searchController: SearchController!
@@ -21,17 +27,11 @@ class CollectionViewController: UICollectionViewController {
         navigationItem.title = "Dogs"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        // Setup search controller
-        autocompleteView = AutocompleteTableViewController(style: .plain)
+        // Setup search controller with autocomplete view
+        setupSearchControllerAndAutocompleteView()
         
-        searchController = SearchController(searchResultsController: autocompleteView)
-        searchController.searchActionDelegate = self
-        searchController.hidesNavigationBarDuringPresentation = false
-        definesPresentationContext = true
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        
-        // Setup datasource
+        // Setup datasource. Important part is to reload the collection view
+        //  data using the dataSource's onDataUpdated closure
         collectionView?.dataSource = dataSource
         dataSource.onDataUpdated = { [unowned self] in
             DispatchQueue.main.async {
@@ -43,6 +43,18 @@ class CollectionViewController: UICollectionViewController {
         viewModel = CollectionViewModel()
     }
     
+    // MARK: Private helper functions
+    
+    private func setupSearchControllerAndAutocompleteView() {
+        autocompleteView = AutocompleteTableViewController(style: .plain)
+        searchController = SearchController(searchResultsController: autocompleteView)
+        searchController.searchActionDelegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
     private func displayError(_ error: ErrorResult) {
         let ac = UIAlertController(title: "An Error Occurred", message: error.description(), preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .cancel))
@@ -51,8 +63,14 @@ class CollectionViewController: UICollectionViewController {
     
 }
 
+// MARK: SearchActionDelegate methods extension
+
 extension CollectionViewController: SearchActionDelegate {
-    func searchBarDidRequestSearchFor(string: String) {
+    func searchControllerDidRequestSearchFor(string: String) {
+        // Method called when searchController requests a search
+        
+        // Separate search strig into breed and sub-breed parts. Then call the
+        //  view model's fetchImagesOf method using the breed and sub-breed.
         let searchParts = string.split(separator: "-")
         var breed: String
         var subBreed: String?
@@ -60,17 +78,22 @@ extension CollectionViewController: SearchActionDelegate {
         if searchParts.count == 2 {
             subBreed = String(searchParts[1]).trimmingCharacters(in: .whitespacesAndNewlines)
         }
+        // Sub-breed "All" is used to get all sub-breeds for a breed therefore
+        //  the specific sub-breed parameter should be set to nil
+        if subBreed == "All" {
+            subBreed = nil
+        }
         viewModel.fetchImagesOf(breed: breed, subBreed: subBreed) { [unowned self] (results, error) in
+            // Check for errors while fetching images
             guard error == nil else {
                 self.displayError(error!)
                 return
             }
             
-            guard let results = results else {
-                return
-            }
-            
-            self.dataSource.data = results.images
+            // Set the results as the data source for this collection view. We
+            //  can force unwrap because we know result is not nil if there is
+            //  no error
+            self.dataSource.data = results!.images
         }
     }
 }
