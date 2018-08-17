@@ -24,13 +24,10 @@ class ImageDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let imageView = UIImageView(frame: view.frame)
-        imageView.image = self.image
-        imageView.backgroundColor = UIColor.black
-        imageView.contentMode = .scaleAspectFit
-        view.addSubview(imageView)
-
+        
+        setupImageView()
+        
+        // Set title display mode to small and turn on hiding of nav bar on tap
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.hidesBarsOnTap = true
     }
@@ -38,6 +35,20 @@ class ImageDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
+    }
+    
+    private func setupImageView() {
+        let imageView = UIImageView(image: self.image)
+        view.addSubview(imageView)
+        
+        imageView.backgroundColor = UIColor.black
+        imageView.contentMode = .scaleAspectFit
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
 }
