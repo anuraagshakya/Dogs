@@ -17,7 +17,6 @@ class AutocompleteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.contentInset = UIEdgeInsetsMake(5, 15, 5, 5)
         readBreedsFromFile()
     }
 
@@ -33,7 +32,7 @@ class AutocompleteTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let label = UILabel(frame: cell.frame)
+        let label = UILabel(frame: cell.frame.insetBy(dx: 10, dy: 0))
         label.text = isFiltering ? filteredBreedList[indexPath.row] : dogsBreedList[indexPath.row]
         cell.addSubview(label)
         return cell
