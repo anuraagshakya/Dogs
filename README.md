@@ -37,7 +37,7 @@ The app assumes that the list of dog breeds will not change and therefore has pr
 
 ## What to add
 
-- A detailed view for viewing images in full screen when tapped
+- Make image detail view zoomable. FIX: not resizing in when orientation is changed.
 - Dynamic cell sizes so that app looks more or less similar on all devices
 - Read the list of dogs from the API
 - Add 'Nice to haves'

@@ -28,7 +28,13 @@ class CollectionViewCell: UICollectionViewCell {
             fetchImageFromUrl(self.urlString)
         }
     }
+    
+    // Function to return currently showing image
+    func currentlyShowingImage() -> UIImage? {
+        return imageView.image
+    }
 
+    // Loads Image from URL when url is set
     private func fetchImageFromUrl(_ urlString: String) {
         guard let url = URL(string: urlString) else {
             print("Invalid image URL \(urlString)")

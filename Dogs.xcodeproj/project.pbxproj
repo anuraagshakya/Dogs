@@ -12,6 +12,7 @@
 		CE194F582110675E005ED8FF /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F572110675E005ED8FF /* CollectionViewModel.swift */; };
 		CE194F5F211075D0005ED8FF /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F5C211075D0005ED8FF /* RequestFactory.swift */; };
 		CE194F612110768D005ED8FF /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE194F602110768C005ED8FF /* ErrorResult.swift */; };
+		CE3B0D3F2126D1E3003C797F /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B0D3E2126D1E3003C797F /* ImageDetailViewController.swift */; };
 		CE857D132112D2D500400EE1 /* DogSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE857D122112D2D500400EE1 /* DogSearchResult.swift */; };
 		CE867B242111FB3A00B99593 /* breeds.json in Resources */ = {isa = PBXBuildFile; fileRef = CE867B232111FB3A00B99593 /* breeds.json */; };
 		CE867B2821121E9400B99593 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE867B2721121E9400B99593 /* SearchController.swift */; };
@@ -35,6 +36,7 @@
 		CE194F572110675E005ED8FF /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		CE194F5C211075D0005ED8FF /* RequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		CE194F602110768C005ED8FF /* ErrorResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResult.swift; sourceTree = "<group>"; };
+		CE3B0D3E2126D1E3003C797F /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		CE857D122112D2D500400EE1 /* DogSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogSearchResult.swift; sourceTree = "<group>"; };
 		CE867B232111FB3A00B99593 /* breeds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breeds.json; sourceTree = "<group>"; };
 		CE867B2721121E9400B99593 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				CE867B2721121E9400B99593 /* SearchController.swift */,
 				CE194F5521106509005ED8FF /* CollectionViewCell.swift */,
 				CE867B2B211242C400B99593 /* AutocompleteTableViewController.swift */,
+				CE3B0D3E2126D1E3003C797F /* ImageDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				CE194F582110675E005ED8FF /* CollectionViewModel.swift in Sources */,
 				CE194F5621106509005ED8FF /* CollectionViewCell.swift in Sources */,
 				CE194F5F211075D0005ED8FF /* RequestFactory.swift in Sources */,
+				CE3B0D3F2126D1E3003C797F /* ImageDetailViewController.swift in Sources */,
 				CEC4A41521104E4100A8E039 /* AppDelegate.swift in Sources */,
 				CE867B2C211242C400B99593 /* AutocompleteTableViewController.swift in Sources */,
 				CEBB72EF2112F73100C09C12 /* Extensions.swift in Sources */,

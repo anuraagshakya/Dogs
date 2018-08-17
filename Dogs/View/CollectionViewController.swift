@@ -43,6 +43,13 @@ class CollectionViewController: UICollectionViewController {
         viewModel = CollectionViewModel()
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let currentCell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        let currentImage = currentCell.currentlyShowingImage()
+        let imageDetailViewController = ImageDetailViewController(image: currentImage)
+        navigationController?.pushViewController(imageDetailViewController, animated: true)
+    }
+    
     // MARK: Private helper functions
     
     private func setupSearchControllerAndAutocompleteView() {
