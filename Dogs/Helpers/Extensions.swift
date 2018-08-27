@@ -10,8 +10,15 @@ import Foundation
 import UIKit
 
 extension String {
-    func capitalizingFirstLetter() -> String{
+    func capitalizingFirstLetter() -> String {
         return prefix(1).uppercased() + dropFirst()
+    }
+}
+
+extension CGFloat {
+    mutating func limitToInclusiveRange(from start: CGFloat, to end: CGFloat) {
+        if self < start { self = start }
+        if self > end { self = end }
     }
 }
 

@@ -11,7 +11,6 @@ import UIKit
 class ImageDetailViewController: UIViewController {
     
     var image: UIImage?
-    var imageView: UIImageView!
     
     init(image: UIImage?) {
         self.image = image
@@ -26,9 +25,8 @@ class ImageDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupImageView()
         setupNavigationBar()
-        addPinchGestureToImageView()
+        setupImageView()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,35 +36,65 @@ class ImageDetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
     }
     
-    // MARK: - Private helper functions
+    // MARK: - Pinch to zoom behavior handler
     
     @objc private func handlePinchGesture(sender: UIPinchGestureRecognizer) {
-        let imageView = sender.view as! UIImageView
-        let currentScale = imageView.frame.size.width / imageView.bounds.size.width
-        let newScale = sender.scale * currentScale
-        let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+        let imageView = sender.view!
+        
+        var newScale = sender.scale * currentScale(of: imageView)
+        newScale.limitToInclusiveRange(from: 0.8, to: 6.0)
+        
         
         switch sender.state {
+            
         case .began, .changed:
-            imageView.transform = transform
-            sender.scale = 1
+            scaleView(imageView, to: newScale)
+            sender.scale = 1.0
+            
+        case .ended:
+            animatedTransformationToIdentityIfRequired(on: imageView)
+            sender.scale = 1.0
+            
         default:
             break
         }
     }
     
+    func currentScale(of view: UIView) -> CGFloat {
+        return view.frame.size.width / view.bounds.size.width
+    }
+    
+    func scaleView(_ view: UIView, to scale: CGFloat) {
+        let transform = CGAffineTransform(scaleX: scale, y: scale)
+        view.transform = transform
+    }
+    
+    func animatedTransformationToIdentityIfRequired(on view: UIView) {
+        if currentScale(of: view) < 1.0 {
+            UIView.animate(withDuration: 0.3) {
+                view.transform = CGAffineTransform.identity
+            }
+        }
+    }
+    
+    // MARK: - Private helper functions
+    
     private func setupImageView() {
-        imageView = UIImageView(image: self.image)
+        let imageView = UIImageView(image: self.image)
         view.addSubview(imageView)
         
+        // Setup display properties
         imageView.backgroundColor = UIColor.black
         imageView.contentMode = .scaleAspectFit
         
+        // Setup anchors
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        addPinchGestureTo(view: imageView)
     }
     
     private func setupNavigationBar() {
@@ -75,11 +103,11 @@ class ImageDetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = true
     }
     
-    private func addPinchGestureToImageView() {
+    private func addPinchGestureTo(view: UIView) {
         // Add pinch gesture recogniser to imageView
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(sender:)))
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(pinchGesture)
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(pinchGesture)
     }
 
 }
