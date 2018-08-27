@@ -11,6 +11,7 @@ import UIKit
 class ImageDetailViewController: UIViewController {
     
     var image: UIImage?
+    var imageView: UIImageView!
     
     init(image: UIImage?) {
         self.image = image
@@ -26,19 +27,36 @@ class ImageDetailViewController: UIViewController {
         super.viewDidLoad()
         
         setupImageView()
-        
-        // Set title display mode to small and turn on hiding of nav bar on tap
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.hidesBarsOnTap = true
+        setupNavigationBar()
+        addPinchGestureToImageView()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // Turn off nav bar hiding before view dissappears
         navigationController?.hidesBarsOnTap = false
     }
     
+    // MARK: - Private helper functions
+    
+    @objc private func handlePinchGesture(sender: UIPinchGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let currentScale = imageView.frame.size.width / imageView.bounds.size.width
+        let newScale = sender.scale * currentScale
+        let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+        
+        switch sender.state {
+        case .began, .changed:
+            imageView.transform = transform
+            sender.scale = 1
+        default:
+            break
+        }
+    }
+    
     private func setupImageView() {
-        let imageView = UIImageView(image: self.image)
+        imageView = UIImageView(image: self.image)
         view.addSubview(imageView)
         
         imageView.backgroundColor = UIColor.black
@@ -49,6 +67,19 @@ class ImageDetailViewController: UIViewController {
         imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    private func setupNavigationBar() {
+        // Set title display mode to small and turn on hiding of nav bar on tap
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.hidesBarsOnTap = true
+    }
+    
+    private func addPinchGestureToImageView() {
+        // Add pinch gesture recogniser to imageView
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(sender:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(pinchGesture)
     }
 
 }
