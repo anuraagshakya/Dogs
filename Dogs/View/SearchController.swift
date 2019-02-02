@@ -15,7 +15,7 @@ protocol SearchActionDelegate {
 
 class SearchController: UISearchController {
     var searchActionDelegate: SearchActionDelegate?
-    var autocompleteView: AutocompleteTableViewController!
+    var autocompleteView: AutocompleteTableViewController?
     
     override init(searchResultsController: UIViewController?) {
         super.init(searchResultsController: searchResultsController)
@@ -24,9 +24,12 @@ class SearchController: UISearchController {
         self.searchBar.delegate = self
         self.searchResultsUpdater = self
         
-        // Cast and save pointer searchResultsController as
-        //  AutocompleteTableViewController
-        self.autocompleteView = searchResultsController! as! AutocompleteTableViewController
+        // Cast and save pointer searchResultsController as AutocompleteTableViewController
+        guard let autoCompleteView = searchResultsController as? AutocompleteTableViewController else {
+            assertionFailure("Could not cas to AutoCompleteTableViewController or does not exist: \(String(describing: searchResultsController))")
+            return
+        }
+        self.autocompleteView = autoCompleteView
     }
     
     // Overrides required by UIKit when overriding any init
@@ -50,38 +53,53 @@ class SearchController: UISearchController {
         //  filteredBreedList in our autocompleteView. Also sets isFiltering
         //  boolean which is used to decide whether to display entire list or
         //  filtered list.
-        autocompleteView.isFiltering = isActive && !searchBarIsEmpty()
-        autocompleteView.filteredBreedList =
-            autocompleteView.dogsBreedList.filter({( breed : String) -> Bool in
+        guard let safeAutocompleteView = autocompleteView else {
+            assertionFailure("Autocomplete view does not exist")
+            return
+        }
+        
+        safeAutocompleteView.isFiltering = isActive && !searchBarIsEmpty()
+        safeAutocompleteView.filteredBreedList =
+            safeAutocompleteView.dogsBreedList.filter({( breed : String) -> Bool in
             return breed.lowercased().contains(searchText.lowercased())
         })
         
         // Reload the autocompleteViews table to show filtered content.
-        autocompleteView.tableView.reloadData()
+        safeAutocompleteView.tableView.reloadData()
     }
 }
 
 extension SearchController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        guard let safeAutocompleteView = autocompleteView else {
+            assertionFailure("Autocomplete view does not exist")
+            return
+        }
+        
         // Show autocompleteView whenever searchController is active. Call our
         //  filterContentForSearchText method.
-        autocompleteView.view.isHidden = false
+        safeAutocompleteView.view.isHidden = false
         filterContentForSearchText(searchBar.text!)
     }
 }
 
 extension SearchController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let safeAutocompleteView = autocompleteView else {
+            assertionFailure("Autocomplete view does not exist")
+            return
+        }
+        
         // Unwrap search text. Check if search text is valid based on list of
         //  valid search strings, if not then search for first result in
         //  in filteredBreedList. This way we make sure to not make an invalid
         //  API call.
         var searchText = searchBar.text ?? ""
-        if !autocompleteView.dogsBreedList.contains(searchText) {
-            guard !autocompleteView.filteredBreedList.isEmpty else {
+        if !safeAutocompleteView.dogsBreedList.contains(searchText) {
+            guard !safeAutocompleteView.filteredBreedList.isEmpty else {
                 return
             }
-            searchText = autocompleteView.filteredBreedList[0]
+            searchText = safeAutocompleteView.filteredBreedList[0]
         }
         
         // Set the searchBar text to represent what we are actually searching
