@@ -198,7 +198,7 @@
 				TargetAttributes = {
 					CEC4A41021104E4100A8E039 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -444,7 +444,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bhunte.Dogs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -463,7 +463,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bhunte.Dogs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
