@@ -8,3 +8,11 @@ target 'Dogs' do
   # Pods for Dogs
   pod 'SwiftyJSON', '~> 5.0'
 end
+
+post_install do |pi|
+    pi.pods_project.targets.each do |t|
+      t.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+    end
+end
