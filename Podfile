@@ -6,5 +6,5 @@ target 'Dogs' do
   use_frameworks!
 
   # Pods for Dogs
-  pod 'SwiftyJSON', '~> 4.0'
+  pod 'SwiftyJSON', '~> 5.0'
 end
